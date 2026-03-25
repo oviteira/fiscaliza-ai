@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# fiscaliza-ai
-=======
 # FiscalizaAI — Plataforma de Análise de Dados Públicos
 
 > **Inteligência Artificial para Transparência Pública e Controle Social**
