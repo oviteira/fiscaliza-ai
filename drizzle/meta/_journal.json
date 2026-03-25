@@ -1,0 +1,41 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1774428084087,
+      "tag": "0000_cool_madame_hydra",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1774428204589,
+      "tag": "0001_hot_human_robot",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1774463364325,
+      "tag": "0002_clammy_unus",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1774463838961,
+      "tag": "0003_rare_boom_boom",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1774463860753,
+      "tag": "0004_nice_ben_parker",
+      "breakpoints": true
+    }
+  ]
+}

@@ -1,0 +1,1241 @@
+{
+  "version": "5",
+  "dialect": "mysql",
+  "id": "1b2ece4b-54dc-464a-98b7-4855bc2d225d",
+  "prevId": "cc2b88ff-4591-497a-8291-9b8f3b5d6ec6",
+  "tables": {
+    "alertas": {
+      "name": "alertas",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "tipo_alerta": {
+          "name": "tipo_alerta",
+          "type": "enum('sobrepreco','vinculo_familiar','concentracao_fornecedor','desvio_geografico','funcionario_fantasma','inconsistencia_patrimonial','padrão_suspeito','outro')",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "parlamentarId": {
+          "name": "parlamentarId",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "contratoId": {
+          "name": "contratoId",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "emendaId": {
+          "name": "emendaId",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "titulo": {
+          "name": "titulo",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "descricao": {
+          "name": "descricao",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "valorEnvolvido": {
+          "name": "valorEnvolvido",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": "'0'"
+        },
+        "scoreRisco": {
+          "name": "scoreRisco",
+          "type": "varchar(10)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "nivelRisco_alerta": {
+          "name": "nivelRisco_alerta",
+          "type": "enum('baixo','medio','alto','critico')",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "status_alerta": {
+          "name": "status_alerta",
+          "type": "enum('novo','analisando','confirmado','descartado','investigando')",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": "'novo'"
+        },
+        "fonteOrigem": {
+          "name": "fonteOrigem",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "dataDeteccao": {
+          "name": "dataDeteccao",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": "(now())"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(now())"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "onUpdate": true,
+          "default": "(now())"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "alertas_id": {
+          "name": "alertas_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    },
+    "contratos": {
+      "name": "contratos",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "numeroContrato": {
+          "name": "numeroContrato",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "orgaoContratante": {
+          "name": "orgaoContratante",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "empresaContratada": {
+          "name": "empresaContratada",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "valorContrato": {
+          "name": "valorContrato",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "valorPago": {
+          "name": "valorPago",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": "'0'"
+        },
+        "dataAssinatura": {
+          "name": "dataAssinatura",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "dataVencimento": {
+          "name": "dataVencimento",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "descricao": {
+          "name": "descricao",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "objeto": {
+          "name": "objeto",
+          "type": "varchar(500)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "scoreRisco": {
+          "name": "scoreRisco",
+          "type": "varchar(10)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": "'0'"
+        },
+        "nivelRisco_contrato": {
+          "name": "nivelRisco_contrato",
+          "type": "enum('baixo','medio','alto','critico')",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": "'baixo'"
+        },
+        "temSobrepreco": {
+          "name": "temSobrepreco",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": 0
+        },
+        "percentualSobrepreco": {
+          "name": "percentualSobrepreco",
+          "type": "varchar(10)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": "'0'"
+        },
+        "temVinculoFamiliar": {
+          "name": "temVinculoFamiliar",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": 0
+        },
+        "fonteOrigem": {
+          "name": "fonteOrigem",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "idFonteOrigem": {
+          "name": "idFonteOrigem",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "dataAtualizacao": {
+          "name": "dataAtualizacao",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "onUpdate": true,
+          "default": "(now())"
+        },
+        "ativo": {
+          "name": "ativo",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": 1
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(now())"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "onUpdate": true,
+          "default": "(now())"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "contratos_id": {
+          "name": "contratos_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {
+        "contratos_numeroContrato_unique": {
+          "name": "contratos_numeroContrato_unique",
+          "columns": [
+            "numeroContrato"
+          ]
+        }
+      },
+      "checkConstraint": {}
+    },
+    "emendas": {
+      "name": "emendas",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "numeroEmenda": {
+          "name": "numeroEmenda",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "parlamentarId": {
+          "name": "parlamentarId",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "parlamentarNome": {
+          "name": "parlamentarNome",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "valorEmenda": {
+          "name": "valorEmenda",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "valorExecutado": {
+          "name": "valorExecutado",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": "'0'"
+        },
+        "municipio": {
+          "name": "municipio",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "estado": {
+          "name": "estado",
+          "type": "varchar(2)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "descricao": {
+          "name": "descricao",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "tipoEmenda": {
+          "name": "tipoEmenda",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "scoreRisco": {
+          "name": "scoreRisco",
+          "type": "varchar(10)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": "'0'"
+        },
+        "nivelRisco_emenda": {
+          "name": "nivelRisco_emenda",
+          "type": "enum('baixo','medio','alto','critico')",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": "'baixo'"
+        },
+        "dataEmenda": {
+          "name": "dataEmenda",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "dataExecucao": {
+          "name": "dataExecucao",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "fonteOrigem": {
+          "name": "fonteOrigem",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "idFonteOrigem": {
+          "name": "idFonteOrigem",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "dataAtualizacao": {
+          "name": "dataAtualizacao",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "onUpdate": true,
+          "default": "(now())"
+        },
+        "ativo": {
+          "name": "ativo",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": 1
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(now())"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "onUpdate": true,
+          "default": "(now())"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "emendas_id": {
+          "name": "emendas_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {
+        "emendas_numeroEmenda_unique": {
+          "name": "emendas_numeroEmenda_unique",
+          "columns": [
+            "numeroEmenda"
+          ]
+        }
+      },
+      "checkConstraint": {}
+    },
+    "exportacoes": {
+      "name": "exportacoes",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "usuarioId": {
+          "name": "usuarioId",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "tipo_export": {
+          "name": "tipo_export",
+          "type": "enum('relatorios','dados','graficos')",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "status_export": {
+          "name": "status_export",
+          "type": "enum('pendente','processando','concluida','erro')",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": "'pendente'"
+        },
+        "totalItens": {
+          "name": "totalItens",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": 0
+        },
+        "itensProcessados": {
+          "name": "itensProcessados",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": 0
+        },
+        "urlArquivo": {
+          "name": "urlArquivo",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "mensagemErro": {
+          "name": "mensagemErro",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "dataInicio": {
+          "name": "dataInicio",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": "(now())"
+        },
+        "dataFim": {
+          "name": "dataFim",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(now())"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "exportacoes_id": {
+          "name": "exportacoes_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    },
+    "parlamentares": {
+      "name": "parlamentares",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "cpf": {
+          "name": "cpf",
+          "type": "varchar(14)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "nome": {
+          "name": "nome",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "partido": {
+          "name": "partido",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "estado": {
+          "name": "estado",
+          "type": "varchar(2)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "cargo": {
+          "name": "cargo",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "telefone": {
+          "name": "telefone",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "dataPosse": {
+          "name": "dataPosse",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "dataFim": {
+          "name": "dataFim",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "idTSE": {
+          "name": "idTSE",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "numeroInscricao": {
+          "name": "numeroInscricao",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "scoreRisco": {
+          "name": "scoreRisco",
+          "type": "varchar(10)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": "'0'"
+        },
+        "nivelRisco": {
+          "name": "nivelRisco",
+          "type": "enum('baixo','medio','alto','critico')",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": "'baixo'"
+        },
+        "totalContratos": {
+          "name": "totalContratos",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": 0
+        },
+        "totalEmendas": {
+          "name": "totalEmendas",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": 0
+        },
+        "totalValorContratos": {
+          "name": "totalValorContratos",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": "'0'"
+        },
+        "totalValorEmendas": {
+          "name": "totalValorEmendas",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": "'0'"
+        },
+        "dataAtualizacao": {
+          "name": "dataAtualizacao",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "onUpdate": true,
+          "default": "(now())"
+        },
+        "ativo": {
+          "name": "ativo",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": 1
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(now())"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "onUpdate": true,
+          "default": "(now())"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "parlamentares_id": {
+          "name": "parlamentares_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {
+        "parlamentares_cpf_unique": {
+          "name": "parlamentares_cpf_unique",
+          "columns": [
+            "cpf"
+          ]
+        },
+        "parlamentares_idTSE_unique": {
+          "name": "parlamentares_idTSE_unique",
+          "columns": [
+            "idTSE"
+          ]
+        }
+      },
+      "checkConstraint": {}
+    },
+    "permissoes": {
+      "name": "permissoes",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "nome": {
+          "name": "nome",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "descricao": {
+          "name": "descricao",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "recurso": {
+          "name": "recurso",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "acao": {
+          "name": "acao",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(now())"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "permissoes_id": {
+          "name": "permissoes_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {
+        "permissoes_nome_unique": {
+          "name": "permissoes_nome_unique",
+          "columns": [
+            "nome"
+          ]
+        }
+      },
+      "checkConstraint": {}
+    },
+    "relatorios_agendados": {
+      "name": "relatorios_agendados",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "parlamentarId": {
+          "name": "parlamentarId",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "frequencia": {
+          "name": "frequencia",
+          "type": "enum('diaria','semanal','mensal')",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "horario": {
+          "name": "horario",
+          "type": "varchar(5)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "destinatarios": {
+          "name": "destinatarios",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "ativo": {
+          "name": "ativo",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": 1
+        },
+        "ultimaExecucao": {
+          "name": "ultimaExecucao",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "proximaExecucao": {
+          "name": "proximaExecucao",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(now())"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "onUpdate": true,
+          "default": "(now())"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "relatorios_agendados_id": {
+          "name": "relatorios_agendados_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    },
+    "roles_permissoes": {
+      "name": "roles_permissoes",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "role": {
+          "name": "role",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "permissaoId": {
+          "name": "permissaoId",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(now())"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "roles_permissoes_id": {
+          "name": "roles_permissoes_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    },
+    "sincronizacoes": {
+      "name": "sincronizacoes",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "fonte": {
+          "name": "fonte",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "status_sinc": {
+          "name": "status_sinc",
+          "type": "enum('iniciada','em_progresso','concluida','erro')",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "totalRegistros": {
+          "name": "totalRegistros",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": 0
+        },
+        "registrosProcessados": {
+          "name": "registrosProcessados",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": 0
+        },
+        "registrosErro": {
+          "name": "registrosErro",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": 0
+        },
+        "mensagem": {
+          "name": "mensagem",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "duracao": {
+          "name": "duracao",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "dataInicio": {
+          "name": "dataInicio",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": "(now())"
+        },
+        "dataFim": {
+          "name": "dataFim",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(now())"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "sincronizacoes_id": {
+          "name": "sincronizacoes_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraint": {}
+    },
+    "users": {
+      "name": "users",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "openId": {
+          "name": "openId",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar(320)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "loginMethod": {
+          "name": "loginMethod",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "githubId": {
+          "name": "githubId",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "googleId": {
+          "name": "googleId",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "avatar": {
+          "name": "avatar",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "role": {
+          "name": "role",
+          "type": "enum('visualizador','analista','admin')",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'visualizador'"
+        },
+        "permissoes": {
+          "name": "permissoes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": "('[]')"
+        },
+        "ativo": {
+          "name": "ativo",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false,
+          "default": 1
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(now())"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "onUpdate": true,
+          "default": "(now())"
+        },
+        "lastSignedIn": {
+          "name": "lastSignedIn",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(now())"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "users_id": {
+          "name": "users_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {
+        "users_openId_unique": {
+          "name": "users_openId_unique",
+          "columns": [
+            "openId"
+          ]
+        },
+        "users_githubId_unique": {
+          "name": "users_githubId_unique",
+          "columns": [
+            "githubId"
+          ]
+        },
+        "users_googleId_unique": {
+          "name": "users_googleId_unique",
+          "columns": [
+            "googleId"
+          ]
+        }
+      },
+      "checkConstraint": {}
+    }
+  },
+  "views": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "tables": {},
+    "indexes": {}
+  }
+}
