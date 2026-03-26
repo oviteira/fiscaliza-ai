@@ -268,14 +268,14 @@ export default function Metodologia() {
                 advogados e especialistas em políticas públicas.
               </p>
               <a
-                href="https://github.com/vitorlucas98/transparencia-publica-ia"
+                href="https://github.com/oviteira/transparencia-publica-ia"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-medium transition-colors"
                 style={{ color: '#06B6D4' }}
               >
                 <Github className="w-4 h-4" />
-                github.com/vitorlucas98/transparencia-publica-ia
+                github.com/oviteira/transparencia-publica-ia
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
             </div>
