@@ -244,7 +244,6 @@ Desenvolvido com o objetivo de fortalecer a democracia brasileira através da tr
 
 ## Contato e Links
 
-- **Site Oficial:** https://fiscalizaai.com.br
 - **GitHub:** https://github.com/oviteira/fiscaliza-ai
 - **Issues e Contribuições:** [GitHub Issues](https://github.com/oviteira/fiscaliza-ai/issues)
 
