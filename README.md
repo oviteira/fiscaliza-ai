@@ -2,6 +2,12 @@
 
 > **Inteligência Artificial para Transparência Pública e Controle Social**
 
+<p align="center">
+  <img src="assets/dashboard.png" width="1000"/>
+  <br>
+  <em>Dashboard principal com análise de risco e visualização de dados públicos</em>
+</p>
+
 Uma plataforma open-source que utiliza inteligência artificial para cruzar dados de dezenas de bases abertas governamentais, identificar padrões de risco financeiro e visualizar redes de conexões entre parlamentares, empresas e contratos públicos.
 
 [![Licença MIT](https://img.shields.io/badge/Licença-MIT-blue.svg)](LICENSE)
